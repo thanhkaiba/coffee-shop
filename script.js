@@ -1,6 +1,7 @@
 
 const apiKeyList = ["AIzaSyDBXWOu5L75-T3bU1o6XKiqyJiW8xm8Dic"];
 const PLAYLIST_ID = "PLWefN5RpaDLNF6HVafGSRwhmc4s0jRs4B";
+const IMAGE_URL = 'https://source.unsplash.com/random/600*250/?girl,landscape';
 var apiKey = apiKeyList[0];
 var listVid = [];
 var listVideo;
@@ -179,8 +180,8 @@ function prevSong() {
 	checkPrivateBack();
 	player.loadVideoById({videoId:listVid[rand].idVid});
 	para.innerHTML = listVid[rand].title;
-	musicPlayer.style.backgroundImage = "url('https://source.unsplash.com/random/600*250/?landscape')";
-	bg.style.backgroundImage = "url('https://source.unsplash.com/random/600*250/?landscape')";
+	musicPlayer.style.backgroundImage = "url(" + IMAGE_URL +")";
+	bg.style.backgroundImage = "url(" + IMAGE_URL +")";
 	playButton(true);
 }
 
@@ -200,8 +201,8 @@ function nextSong() {
 	checkPrivate();
 	player.loadVideoById({videoId:listVid[rand].idVid});
 	para.innerHTML = listVid[rand].title;
-	musicPlayer.style.backgroundImage = "url('https://source.unsplash.com/random/600*250/?landscape')";
-	bg.style.backgroundImage = "url('https://source.unsplash.com/random/600*250/?landscape')";
+	musicPlayer.style.backgroundImage = "url(" + IMAGE_URL +")";
+	bg.style.backgroundImage = "url(" + IMAGE_URL +")";
 	playButton(true);
 
 }
@@ -215,8 +216,8 @@ function nextVideo() {
 		checkPrivate();
 		player.loadVideoById({videoId:listVid[rand].idVid});
 		para.innerHTML = listVid[rand].title;
-		musicPlayer.style.backgroundImage = "url('https://source.unsplash.com/random/600*250/?landscape')";
-		bg.style.backgroundImage = "url('https://source.unsplash.com/random/600*250/?landscape')";
+		musicPlayer.style.backgroundImage = "url(" + IMAGE_URL +")";
+		bg.style.backgroundImage = "url(" + IMAGE_URL +")";
 	}
 
 }
