@@ -1,7 +1,7 @@
 
 const apiKeyList = ["AIzaSyDBXWOu5L75-T3bU1o6XKiqyJiW8xm8Dic"];
 const PLAYLIST_ID = "PLWefN5RpaDLNF6HVafGSRwhmc4s0jRs4B";
-const IMAGE_URL = 'https://source.unsplash.com/random/600*250/?sexy';
+const IMAGE_URL = 'https://source.unsplash.com/random/600*250/?coffee-shop';
 var apiKey = apiKeyList[0];
 var listVid = [];
 var listVideo;
