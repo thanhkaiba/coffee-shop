@@ -1,5 +1,6 @@
 
 const apiKeyList = ["AIzaSyDBXWOu5L75-T3bU1o6XKiqyJiW8xm8Dic"];
+const PLAYLIST_ID = "PLWefN5RpaDLNF6HVafGSRwhmc4s0jRs4B";
 var apiKey = apiKeyList[0];
 var listVid = [];
 var listVideo;
@@ -52,12 +53,12 @@ const getPlayListItems = async playlistID => {
     	});
 		token = result.data.nextPageToken;
 		resultArr.push(result.data);
-	}	
+	}
 	return resultArr;
 };
 
 //Xu li Item de lay Title video va videoId
-getPlayListItems("PLWefN5RpaDLNqTaWsVRJbhtqt9wLYUEkf")
+getPlayListItems(PLAYLIST_ID)
 .then(data => {
 	data.forEach(item => {
     	item.items.forEach(i => listVid.push({title: i.snippet.title, idVid: i.snippet.resourceId.videoId}));
@@ -77,11 +78,11 @@ getPlayListItems("PLWefN5RpaDLNqTaWsVRJbhtqt9wLYUEkf")
 function changeAPIKey(newKey, err) {
 	if (err.response.data.error.errors[0].reason == "dailyLimitExceeded") {
 		apiKey = newKey;
-		getPlayListItems("PLWefN5RpaDLNqTaWsVRJbhtqt9wLYUEkf")
+		getPlayListItems(PLAYLIST_ID)
 		.then(data => {
 			data.forEach(item => {
 	    	item.items.forEach(i => listVid.push({title: i.snippet.title, idVid: i.snippet.resourceId.videoId}));
-			
+
 			rand = Math.floor(Math.random()*listVid.length);
 		    checkPrivate();
 		    tag.src = "https://www.youtube.com/iframe_api";
@@ -93,7 +94,7 @@ function changeAPIKey(newKey, err) {
 			changeAPIKey(apiKeyList[2], err);
 		});
 
-		
+
 	}
 }
 
@@ -140,13 +141,13 @@ function changeStatusPlay() {
 	} else if (player.getPlayerState() != 0) {
 		playVideo();
     	playButton(true);
-    	
-    } 
+
+    }
 }
 
 function onPlayerStateChange(event) {
     if (event.data === 0) {
-    	playButton(false); 
+    	playButton(false);
     }
 }
 
@@ -180,7 +181,7 @@ function prevSong() {
 	para.innerHTML = listVid[rand].title;
 	musicPlayer.style.backgroundImage = "url('https://source.unsplash.com/random/600*250/?landscape')";
 	bg.style.backgroundImage = "url('https://source.unsplash.com/random/600*250/?landscape')";
-	playButton(true);			
+	playButton(true);
 }
 
 //next song
@@ -217,7 +218,7 @@ function nextVideo() {
 		musicPlayer.style.backgroundImage = "url('https://source.unsplash.com/random/600*250/?landscape')";
 		bg.style.backgroundImage = "url('https://source.unsplash.com/random/600*250/?landscape')";
 	}
-	
+
 }
 
 //Phat lap lai
@@ -249,7 +250,7 @@ function checkPrivateBack() {
 			rand = listVid.length - 1;
 		} else {
 			rand -= 1;
-		}		
+		}
 		checkPrivateBack();
 	}
 };
@@ -281,10 +282,10 @@ function changePlaylistId () {
 		next.style.display = "block";
 		btn2.style.display = "block";
 		repeat.style.display = "block";
-		para.innerHTML = listVid[rand].title;			    
+		para.innerHTML = listVid[rand].title;
 		player.loadVideoById({videoId:listVid[rand].idVid});
 		playButton(true);
-	});	
+	});
 
 }
 
